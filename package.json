@@ -1,0 +1,14 @@
+{
+  "name": "jeopardybackend",
+  "version": "1.0.0",
+  "description": "Changing the method to pull from backend server instead of jservice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Clinton Johnson",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

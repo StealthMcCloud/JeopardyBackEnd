@@ -1,0 +1,26 @@
+body {
+    background: gray;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    width: 150px;
+    height: 20px;
+}
+span {
+    display: flex;
+    width: 150px;
+    height: 100px;
+    background-image: linear-gradient(black, darkblue, black);
+    border: 3px solid black;
+    color: white;
+    margin-left: 2px;
+    margin-top: 2px;
+    align-items: center;
+    justify-content: center;
+}
+
+.newDiv {
+    display: flex;
+}
