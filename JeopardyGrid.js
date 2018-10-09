@@ -1,10 +1,10 @@
-class JeopardyGrid extends Grid {
+class JeopardyGrid extends Grid {   
 
-    constructor (options) {
+    constructor(options) {
         options.numberOfColumns = options.categoryIDs.length
         super(options)
         this.categoryIDs = options.categoryIDs
-        this.jServiceURL = "http://cors-anywhere.herokuapp.com/" + "http://jservice.io/api/category?id="
+        this.jServiceURL = "http://localhost:3000/api/category/"
         this.categories = null
 
         this.getCategories()
@@ -15,7 +15,7 @@ class JeopardyGrid extends Grid {
         return new JeopardyCell(rowIndex, columnIndex, this.rowElement)
     }
 
-    onClick (event) {
+    onClick(event) {
         if (!event.target.classList.contains("cell")) return
         const cell = event.target.instance
         if (cell.isCategoryHeader) return
@@ -23,7 +23,7 @@ class JeopardyGrid extends Grid {
         cell.showQuestion()
     }
 
-    async getCategories () {
+    async getCategories() {
         const categoryPromises = this.categoryIDs.map(id => {
             return fetch(this.jServiceURL + id).then(res => res.json())
         })
@@ -32,7 +32,7 @@ class JeopardyGrid extends Grid {
         this.assignCluesToCells()
     }
 
-    assignCluesToCells () {
+    assignCluesToCells() {
         for (let rowIndex = 0; rowIndex < this.numberOfRows; rowIndex++) {
             for (let columnIndex = 0; columnIndex < this.numberOfColumns; columnIndex++) {
                 const cell = this.gridArray[rowIndex][columnIndex]
@@ -45,5 +45,4 @@ class JeopardyGrid extends Grid {
             }
         }
     }
-    
 }
