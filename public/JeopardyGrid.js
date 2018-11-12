@@ -4,14 +4,14 @@ class JeopardyGrid extends Grid {
         options.numberOfColumns = options.categoryIDs.length
         super(options)
         this.categoryIDs = options.categoryIDs
-        this.jServiceURL = "http://localhost:3000/api/category/"
+        this.homeServerURL = "http://localhost:3000/api/category/"
         this.categories = null
 
         this.getCategories()
         this.gridContainer.addEventListener("click", this.onClick.bind(this))
     }
 
-    createCell(rowIndex, columnIndex, rowElement) {
+    createCell(rowIndex, columnIndex) {
         return new JeopardyCell(rowIndex, columnIndex, this.rowElement)
     }
 
@@ -25,7 +25,7 @@ class JeopardyGrid extends Grid {
 
     async getCategories() {
         const categoryPromises = this.categoryIDs.map(id => {
-            return fetch(this.jServiceURL + id).then(res => res.json())
+            return fetch(this.homeServerURL + id).then(res => res.json())
         })
 
         this.categories = await Promise.all(categoryPromises)
